@@ -1,4 +1,4 @@
-package problem9;
+package solutions.problem9;
 
 public class MinHeap {
     private int[] heap;
@@ -6,10 +6,19 @@ public class MinHeap {
 
     public MinHeap(int n) {
         this.heap = new int[n];
+        this.size = 0; // initialized size to 0
     }
 
+    // Solution
     public void insert(int elem) {
-        // FILL IN CODE
+        size++;
+        heap[size] = elem;
+
+        int current = size;
+        while(heap[current] < heap[parent(current)]) {
+            swap(current, parent(current));
+            current = parent(current);
+        }
     }
 
     /** Helper method for the insert method
